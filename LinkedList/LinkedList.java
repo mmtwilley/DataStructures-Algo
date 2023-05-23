@@ -125,5 +125,51 @@ public class LinkedList{
 
         return false;
     }
+
+    public boolean insert(int index, int value){
+        Node newNode = new Node(value);
+        if(index < 0 || index > length){
+            return null;
+        }
+        if(index == 0){
+            this.prepend(value);
+            return true;
+        }
+        if(index == length){
+            this.append(value);
+            return true;
+        }
+        Node temp = this.get(index -1);
+        newNode.next = temp.next;
+        temp.next  = newNode;
+        length++;
+        return true;
+    }
+
+    public boolean remove(int index, int value){
+        if(index < 0 || index > length) return false;
+        if(index == 0) return this.removeFirst();
+        if(index == length-1) return this.removeLast();
+        Node prev = this.get(index-1);
+        Node temp = prev.next;
+        prev.next = temp.next;
+        temp.next = null;
+        length--;
+        return temp;
+    }
+
+    public void reverse(){
+        Node temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+        Node before = null;
+        Node after = temp.next;
+        for(int i = 0; i < this.length; i++){
+            after = temp.next;
+            temp.next = before;
+            before = temp;
+            temp = after;
+        }
+    }
  
 }
