@@ -1,4 +1,4 @@
-package Algorithms.utlis.PatternMatching.kuth_morris_pratt
+package Algorithms.utlis.PatternMatching.kuth_morris_pratt;
 
 public class KMP {
     //KnuthMorrisPratt
